@@ -83,7 +83,9 @@ The final processed dataset is stored as:
 ## Dashboard Preview
 
 ![Sales Dashboard](06_olist_sales_dashboard.png)
+View the live interactive dashboard here:
 
+https://public.tableau.com/views/FinalDashboard_17726510200480/Dashboard
 The Tableau dashboard visualizes:
 
 - total leads and conversions  
