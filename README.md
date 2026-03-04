@@ -1,84 +1,113 @@
 # Lead Quality & Conversion Analysis
 
-This project explores how lead quality affects conversion performance in a marketing funnel.  
-Using SQL, Excel, and Tableau, the dataset was cleaned, enriched with new metrics, and then visualized through an interactive dashboard.
+This project explores how **lead quality and data completeness influence conversion outcomes** in a marketing funnel.
 
-The main idea behind this analysis was to understand two things:
+Using SQL, Excel, and Tableau, the dataset was cleaned, enriched with additional metrics, and visualized through an interactive dashboard to identify patterns in lead readiness and acquisition channel performance.
 
-• Do higher quality leads convert more often?  
-• Which acquisition channels bring better leads into the funnel?
+The goal of this analysis was to understand:
 
-The dataset contains around **1,000 marketing leads** with attributes such as acquisition channel, company information, revenue declaration, stock availability, and other lead qualification signals.
-
-Several fields in the dataset had missing values, which made it possible to explore how **data completeness and lead readiness influence conversion outcomes.**
+- Do higher quality leads convert more often?
+- Which acquisition channels bring better leads into the funnel?
+- How does missing lead information affect conversion rates?
 
 ---
 
 ## Tools Used
 
-SQL – building the data pipeline and feature engineering  
-Excel – initial exploration and validation  
-Tableau – building the interactive dashboard and visual analysis
+**SQL**  
+Used to build the data pipeline, merge datasets, and engineer new lead quality metrics.
+
+**Excel**  
+Used for initial data exploration and quick validation checks.
+
+**Tableau**  
+Used to create an interactive dashboard to visualize conversion trends and lead readiness patterns.
+
+---
+
+## Dataset
+
+The project uses two datasets:
+
+- **Leads dataset** – contains marketing qualified leads with acquisition channel and profile attributes.
+- **Closed deals dataset** – contains leads that converted into customers.
+
+Both datasets were combined using SQL to build a structured **marketing funnel dataset**.
+
+The final dataset contains approximately **1000 leads** with attributes such as:
+
+- acquisition origin  
+- declared revenue  
+- product catalog size  
+- stock availability  
+- company information  
+- behavioural profile  
 
 ---
 
 ## Data Preparation
 
-A SQL pipeline was used to prepare the analysis dataset.
+A SQL pipeline was created to transform the raw datasets into a clean analytical table.
 
-The main steps included:
+The pipeline performs the following steps:
 
-• Joining the **leads** and **closed_deals** tables  
-• Creating a binary **conversion flag**  
-• Calculating a **lead readiness score** based on available information  
-• Measuring **data completeness** using missing field counts  
-• Cleaning categorical variables such as behaviour profile
+1. Merge leads and closed deals datasets.
+2. Create a **conversion flag** to identify successful deals.
+3. Calculate **missing fields count** to measure data completeness.
+4. Build a **lead readiness score** based on available business signals.
+5. Create a **friction score** representing missing qualification signals.
+6. Classify leads into **high or low completeness levels**.
 
-The final analysis table (`funnel_base`) contains both the raw lead attributes and several engineered metrics used in the dashboard.
+The final processed dataset is stored as:
 
----
-
-## Dashboard
-
-An interactive Tableau dashboard was created to explore relationships between lead quality, acquisition channels, and conversion performance.
-
-The dashboard focuses on:
-
-• Lead readiness vs conversion  
-• Channel performance in generating conversions  
-• Distribution of lead readiness across the dataset  
-• Which acquisition channels produce higher quality leads
-
-Tableau Public Dashboard:  
-*(paste your Tableau Public link here)*
+```
+05_funnel_base.csv
+```
 
 ---
 
 ## Key Insights
 
-A few patterns stood out during the analysis:
+- Nearly **99% of leads have a readiness score of 0**, meaning most leads enter the funnel with very little qualifying information.
 
-• Nearly **99% of leads have a readiness score of 0**, indicating that most leads enter the funnel with very little qualifying information.
+- Despite low data completeness, the **overall conversion rate is around 9%**.
 
-• Despite this, the overall **conversion rate is around 9%**.
+- Acquisition channels such as **Paid Search and Organic Search** tend to bring slightly higher readiness leads compared to other sources.
 
-• Channels such as **Paid Search and Organic Search** tend to generate slightly higher readiness leads compared to other sources.
+- A large portion of leads lack critical business information, indicating an opportunity to **improve data collection during lead acquisition**.
 
-• Improving the quality and completeness of lead data at the acquisition stage could significantly improve lead qualification and conversion outcomes.
+- Improving **lead qualification and data completeness** could significantly improve conversion outcomes.
+
+---
+
+## Dashboard Preview
+
+![Sales Dashboard](06_olist_sales_dashboard.png)
+
+The Tableau dashboard visualizes:
+
+- total leads and conversions  
+- conversion rates by acquisition channel  
+- lead readiness distribution  
+- relationship between readiness score and conversions  
 
 ---
 
 ## Project Structure
 
-lead-quality-conversion-analysis  
-│  
-├ funnel_base.csv  
-├ lead_funnel_pipeline.sql  
-├ dashboard_preview.png  
-└ README.md  
+```
+lead-quality-conversion-analysis
+│
+├ README.md
+├ 02_leads_cleaned.csv
+├ 03_closed_cleaned.csv
+├ 04_lead_quality_conversion_analysis.sql
+├ 05_funnel_base.csv
+└ 06_olist_sales_dashboard.png
+```
 
 ---
 
 ## Author
 
-Shraddha Dangwal
+Shraddha Dangwal 
